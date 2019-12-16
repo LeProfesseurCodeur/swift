@@ -15,6 +15,7 @@ var str = "Hello, playground"
 //    }
 //}
 
+// 2e partie : constructeur avec player
 class Player {
     //propriété
     var name = "Inconnu"
@@ -48,4 +49,59 @@ joueur1.description()
 //utiliser le constructeur avec un init personnalisé
 var joueur2 = Player(name:"Alice")
 joueur2.description()
+
+// 3è partie : Héritage
+
+class BestPlayer : Player {
+    //propriété additionnel
+    var memberLevel: String
+    
+    override init() {
+        memberLevel = "Gold"
+        super.init()
+    }
+    
+    override init(name: String) {
+        memberLevel = "Gold"
+        super.init(name: name)
+    }
+    
+    override func description() -> String {
+        let originalMessage = super.description()
+        return "\(originalMessage) et à le niveau \(memberLevel)"
+    }
+    
+    //méthode additionelle
+    func calculateBonus() {
+        self.score += 1000
+        "Le nouveau score est \(self.score)"
+    }
+}
+var newPlayer = BestPlayer(name: "Manuel")
+newPlayer.description()
+newPlayer.calculateBonus()
+
+// 4e partie : Propriétés calculées
+
+import Foundation
+
+class Person {
+    //propriété stockées
+    var firstName : String
+    var lastName : String
+    
+    //Propriété calculée
+    var fullName : String {
+        return firstName + " " + lastName
+    }
+    
+    init(first: String, last : String) {
+        self.firstName = first
+        self.lastName = last
+    }
+}
+
+var examplePerson = Person(first: "Jen", last: "Barber")
+examplePerson.firstName
+examplePerson.lastName
 
