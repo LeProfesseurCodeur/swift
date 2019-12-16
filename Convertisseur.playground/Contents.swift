@@ -105,3 +105,34 @@ var examplePerson = Person(first: "Jen", last: "Barber")
 examplePerson.firstName
 examplePerson.lastName
 
+// 5e partie : créer des propriétés et méthodes Type
+
+class BankAccount {
+    // propriété stockées
+    let accountNumber : Int
+    let routingCode = 12345678
+    var balance : Double
+    var interestRate : Float = 2.0
+    
+    init(num : Int, initialBalance : Double) {
+        self.accountNumber = num
+        self.balance = initialBalance
+    }
+    
+    func deposit(amount : Double) {
+        balance += amount
+    }
+    
+    func withdraw(amount : Double) -> Bool {
+        if balance > amount {
+            balance -= amount
+            return true
+        } else {
+            "Fonds non suffisants"
+            return false
+        }
+    }
+    // etc..
+}
+
+var secondAccount = BankAccount(num: 22113322, initialBalance: 4543.54)
